@@ -1,3 +1,5 @@
+
+
 var questions;
 var answers;
 var numCorrect = 0;
@@ -6,6 +8,7 @@ var clockRunning = false;
 var intervalID;
 var timer = 30;
 
+// Object Array with answers, need better way to access information
 var questionsArr = [
     {
         question: 'Who said, "Veni, Vidi, Vici"?',
@@ -35,6 +38,8 @@ var questionsArr = [
         correctAnswer: "b"
     }
 ];
+
+// Initial function for beginning Quiz
 function startUp () {
 window.onload = function() {
     var startBtn = $("<button>");
@@ -75,13 +80,14 @@ window.onload = function() {
 };
 
 
-
+    // Create Submit button to collect answers
     var submitBtn = $("<button>");
     submitBtn.attr("id", "submit");
     submitBtn.text("Submit");
 
     $("#submit").append(submitBtn);
 
+    // Create Quiz questions and answers and push into HTML (Need better way to do it)
     function buildQuiz() {
         for (var i = 0; i < questionsArr.length; i++) {
 
@@ -155,7 +161,7 @@ window.onload = function() {
 
    
 
-
+    // Need to find better/working way to collect correct answers
     function checkAnswers() {
         if ($("#" + questionsArr[0].answers.a).checked === true) {
             numCorrect++;
@@ -174,6 +180,7 @@ window.onload = function() {
         console.log(numCorrect);
     };
 
+    // Submit answers when done with Quiz
     $("#submit").on("click", function() {
         checkAnswers();
 
