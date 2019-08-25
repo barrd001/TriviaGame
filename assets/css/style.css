@@ -1,0 +1,25 @@
+body {
+    background-image: url("../images/background.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    color: white;
+
+}
+
+#main-container {
+    background-color: #9c120B;
+    width: 980px;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 50px;
+    font-size: 25px;
+}
+
+label {
+    margin-right: 20px;
+    color: yellow;
+}
+
+
+
