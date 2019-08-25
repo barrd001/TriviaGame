@@ -2,6 +2,10 @@ var questions;
 var answers;
 var numCorrect = 0;
 
+var clockRunning = false;
+var intervalID;
+var timer = 30;
+
 var questionsArr = [
     {
         question: 'Who said, "Veni, Vidi, Vici"?',
@@ -31,7 +35,7 @@ var questionsArr = [
         correctAnswer: "b"
     }
 ];
-
+function startUp () {
 window.onload = function() {
     var startBtn = $("<button>");
     startBtn.attr("id", "start");
@@ -39,12 +43,37 @@ window.onload = function() {
 
     $("#start").append(startBtn);
 }
-
+};
     $("#start").on("click", function() {
     buildQuiz();
     $("#start").hide();
     $("#submit").show();
     $("#timer").show();
+    clock();
+
+   
+    function clock() {
+        clearInterval(intervalID);
+        intervalID = setInterval(decrement, 1000);
+    }
+
+    function decrement() {
+        timer--;
+        $("#timer").html("<h2>" + timer + " seconds left! <h2>");
+    
+
+    if (timer === 0) {
+        $("#submit").hide();
+        $("#timer").hide();
+        $("#questions").text("Game Over!");
+        $("#restart").show();
+        $("#restart").append(startBtn);
+        startUp();
+
+
+    };
+};
+
 
 
     var submitBtn = $("<button>");
@@ -124,10 +153,7 @@ window.onload = function() {
         };
     };
 
-    var correctAnswers = [
-        questionsArr[0].answers.a, questionsArr[1].answers.c, questionsArr[2].answers.b
-        
-    ];
+   
 
 
     function checkAnswers() {
@@ -153,3 +179,5 @@ window.onload = function() {
 
     });
 });
+
+startUp();
